@@ -28,21 +28,6 @@ router.get('/', (req, res, next) => {
 
 
 /**
- * POST /api/customers
- * Create a new customer.
- */
-router.post('/', (req, res, next) => {
-  model.create(req.body, (err, entity) => {
-    if (err) {
-      next(err);
-      return;
-    }
-    res.json(entity);
-  });
-});
-
-
-/**
  * GET /api/customers/:id
  * Retrieves a given customer.
  */
@@ -53,34 +38,6 @@ router.get('/:customers', (req, res, next) => {
       return;
     }
     res.json(entity);
-  });
-});
-
-/**
- * PUT /api/customers/:id
- * Updates a given customer.
- */
-router.put('/:customers', (req, res, next) => {
-  model.update(req.params.customers, req.body, (err, entity) => {
-    if (err) {
-      next(err);
-      return;
-    }
-    res.json(entity);
-  });
-});
-
-/**
- * DELETE /api/customers/:id
- * Deletes a given customer.
- */
-router.delete('/:customers', (req, res, next) => {
-  model.delete(req.params.customers, err => {
-    if (err) {
-      next(err);
-      return;
-    }
-    res.status(200).send('OK');
   });
 });
 
@@ -96,20 +53,3 @@ router.use((err, req, res, next) => {
 });
 
 module.exports = router;
-
-/**
- * GET /api/customers
- * Retrieves 'all' customers with explicit limit for a page.
- */
-// router.get('/', (req, res, next) => {
-//   model.list(10, req.query.pageToken, (err, entities, cursor) => {
-//     if (err) {
-//       next(err);
-//       return;
-//     }
-//     res.json({
-//       items: entities,
-//       nextPageToken: cursor,
-//     });
-//   });
-// });
