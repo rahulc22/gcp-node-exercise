@@ -12,7 +12,6 @@ router.use(bodyParser.json());
  * GET /api/customers
  */
 router.get('/', (req, res) => {
-
   model.list((err, entities) => {
     err ? res.sendStatus(err) : res.json({
       items: entities,
